@@ -10,6 +10,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.FlxSprite;
 import flixel.system.FlxSound;
 import flixel.util.FlxTimer;
+import lime.utils.Assets;
 import flixel.addons.display.FlxBackdrop;
 import flixel.addons.transition.FlxTransitionableState;
 #if MODS_ALLOWED
@@ -769,8 +770,8 @@ SoundTest.destroyFreeplayVocals();
             var directories:Array<String> = [/*Paths.mods('songs/'),*/ Paths.mods(Paths.currentModDirectory + '/songs/'), Paths.getPreloadPath('songs/')];
             for (i in 0...directories.length) {
                 var directory:String = directories[i];
-                if(FileSystem.exists(directory)) {
-                    for (file in FileSystem.readDirectory(directory)) {
+                if(Assets.exists(directory)) {
+                    for (file in HSys.readDirectory(directory)) {
                         var path = haxe.io.Path.join([directory, file]);
                         if (doSkipFile(file))
                             {
