@@ -3,6 +3,7 @@ import openfl.utils.Assets;
 import openfl.display.Bitmap;
 #if web
 import openfl.net.NetConnection;
+
 import openfl.net.NetStream;
 import openfl.events.NetStatusEvent;
 import openfl.media.Video;
@@ -10,6 +11,7 @@ import openfl.media.Video;
 import openfl.events.Event;
 import vlc.VlcBitmap;
 #end
+import extension.videoview.VideoView;	
 import flixel.FlxBasic;
 import flixel.FlxG;
 
@@ -56,6 +58,15 @@ class FlxVideo extends FlxBasic {
 			}
 		});
 		netStream.play(name);
+
+		#elseif android
+
+		VideoView.playVideo('file:///android_asset/' + path);
+		VideoView.onCompletion = function(){
+			if (finishCallback != null){
+				finishCallback();
+			}
+		}
 
 		#elseif desktop
 		// by Polybius, check out PolyEngine! https://github.com/polybiusproxy/PolyEngine
