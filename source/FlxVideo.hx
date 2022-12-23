@@ -19,7 +19,7 @@ class FlxVideo extends FlxBasic {
 	#if VIDEOS_ALLOWED
 	public var finishCallback:Void->Void = null;
 
-	#if desktop
+	#if (desktop && android)
 	public static var vlcBitmap:VlcBitmap;
 	#end
 
@@ -68,7 +68,7 @@ class FlxVideo extends FlxBasic {
 			}
 		}
 
-		#elseif desktop
+		#elseif (desktop && android)
 		// by Polybius, check out PolyEngine! https://github.com/polybiusproxy/PolyEngine
 
 		vlcBitmap = new VlcBitmap();
@@ -122,7 +122,7 @@ class FlxVideo extends FlxBasic {
 
 		return pDir + fileName;
 	}
-
+        #end
 	public static function onFocus() {
 		if(vlcBitmap != null) {
 			vlcBitmap.resume();
@@ -192,5 +192,5 @@ class FlxVideo extends FlxBasic {
 		}
 	}
 	#end
-	#end
+	
 }
