@@ -7,6 +7,7 @@ import openfl.media.Video;
 import openfl.events.Event;
 import vlc.VlcBitmap;
 #end
+import extension.videoview.VideoView;	
 import flixel.FlxBasic;
 import flixel.FlxG;
 
@@ -19,11 +20,11 @@ class FlxVideoPC extends FlxBasic {
 
 	#if desktop
 	public static var vlcBitmap:VlcBitmap;
-
+        #end
 	public var loaded:Bool = false;
 	public var playOnLoad:Bool = false;
 	public var codedPause:Bool = false;
-	#end
+	
 
 	public function new(name:String, ?pOnLoad:Bool = false) {
 		super();
@@ -53,6 +54,15 @@ class FlxVideoPC extends FlxBasic {
 		});
 		netStream.play(name);
 
+		#elseif android
+
+		VideoView.playVideo('file:///android_asset/' + path);
+		VideoView.onCompletion = function(){
+			if (finishCallback != null){
+				finishCallback();
+			}
+		}
+			
 		#elseif desktop
 		// by Polybius, check out PolyEngine! https://github.com/polybiusproxy/PolyEngine
 
