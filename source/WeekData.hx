@@ -199,7 +199,7 @@ class WeekData {
 				var weekFile:WeekData = new WeekData(week);
 				if(i >= originalLength)
 				{
-					#if MODS_ALLOWED
+					#if desktop 
 					weekFile.folder = directory.substring(Paths.mods().length, directory.length-1);
 					#end
 				}
@@ -214,7 +214,7 @@ class WeekData {
 
 	private static function getWeekFile(path:String):WeekFile {
 		var rawJson:String = null;
-		#if MODS_ALLOWED
+		#if desktop 
 		if(FileSystem.exists(path)) {
 			rawJson = File.getContent(path);
 		}
