@@ -19,6 +19,7 @@ import flixel.tweens.FlxEase;
 import flixel.util.FlxColor;
 import flixel.addons.text.FlxTypeText;
 import flixel.group.FlxSpriteGroup;
+import openfl.utils.Assets;
 #if sys
 import sys.io.File;
 import sys.FileSystem;
@@ -82,8 +83,8 @@ class DialogueStory extends FlxSpriteGroup {
         // init the dialogue.
         this.mode = mode;
 
-        if (FileSystem.exists("assets/data/" + PlayState.SONG.song.toLowerCase() + "/dialogue.txt"))
-            txtFile = File.getContent("assets/data/" + PlayState.SONG.song.toLowerCase() + "/dialogue.txt");
+        if (HSys.exists("assets/data/" + PlayState.SONG.song.toLowerCase() + "/dialogue.txt"))
+            txtFile = HSys.getContent("assets/data/" + PlayState.SONG.song.toLowerCase() + "/dialogue.txt");
         else // warns you incase ya forgot the dialogue text file.
             FlxG.stage.window.alert("DIALOGUE FILE MISSING", "DialogueStory.hx");
 
