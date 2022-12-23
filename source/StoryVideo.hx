@@ -88,7 +88,7 @@ class StoryVideo extends MusicBeatState
 			fileName = Paths.video(name);
 			#if sys
 			
-			if(OpenFlAssets.exists(fileName))
+			if(Assets.exists(fileName))
 			#end
 			{
 				foundFile = true;
