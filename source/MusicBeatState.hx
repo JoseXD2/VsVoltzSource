@@ -25,11 +25,11 @@ class MusicBeatState extends FlxUIState
 	var bruhLOUDNESS:Int = 0;
 	var flag:Flag = new Flag(0,0);
 	public static var musInstance:MusicBeatState;
-	#if desktop
+	
 	public var scaleRatio = ClientPrefs.getResolution()[1] / 720;
 	var modeRatio:RatioScaleMode;
 	var modeStage:StageSizeScaleMode;
-	#end
+	
 	private var controls(get, never):Controls;
 
 	inline function get_controls():Controls
