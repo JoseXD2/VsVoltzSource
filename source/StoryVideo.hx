@@ -11,7 +11,7 @@ import lime.app.Application;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
-
+import lime.utils.Assets;
 class StoryVideo extends MusicBeatState
 {
 	private var videoCurrentlyPlaying:FlxVideo = null;
@@ -79,7 +79,7 @@ class StoryVideo extends MusicBeatState
 		var foundFile:Bool = false;
 		var fileName:String = #if MODS_ALLOWED Paths.modFolders('videos/' + name + '.' + Paths.VIDEO_EXT); #else ''; #end
 		#if sys
-		if(FileSystem.exists(fileName)) {
+		if(Assets.exists(fileName)) {
 			foundFile = true;
 		}
 		#end
@@ -87,8 +87,7 @@ class StoryVideo extends MusicBeatState
 		if(!foundFile) {
 			fileName = Paths.video(name);
 			#if sys
-			if(FileSystem.exists(fileName))
-			#else
+			
 			if(OpenFlAssets.exists(fileName))
 			#end
 			{
