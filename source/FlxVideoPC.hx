@@ -100,7 +100,7 @@ class FlxVideoPC extends FlxBasic {
 
 		return pDir + fileName;
 	}
-	
+	#end
 	public static function onFocus() {
 		if(vlcBitmap != null) {
 			vlcBitmap.resume();
@@ -186,5 +186,5 @@ class FlxVideoPC extends FlxBasic {
 		}
 	}
 	#end
-	#end
+	
 }
