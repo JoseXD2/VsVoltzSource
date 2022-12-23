@@ -23,7 +23,7 @@ import openfl.display.StageScaleMode;
 #if desktop
 import Discord.DiscordClient;
 #end
-
+import lime.system.System;
 class Main extends Sprite
 {
 	var gameWidth:Int = 1280; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
@@ -36,6 +36,7 @@ class Main extends Sprite
 	public static var fpsVar:FPS;
 	public static var dothebrit:Bool = false;
 
+	public static var path:String = System.applicationStorageDirectory;
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
 	public static function main():Void
@@ -138,7 +139,7 @@ class Main extends Sprite
 		dateNow = StringTools.replace(dateNow, " ", "_");
 		dateNow = StringTools.replace(dateNow, ":", "'");
 
-		path = "./crash/" + "VsVoltz_" + dateNow + ".txt";
+		path = Main.path + "./crash/" + "VsVoltz_" + dateNow + ".txt";
 
 		for (stackItem in callStack)
 		{
@@ -162,10 +163,10 @@ class Main extends Sprite
 
 		errMsg += "\r\nUncaught Error: " + m + "\r\n";
 
-		if (!FileSystem.exists("./crash/"))
-			FileSystem.createDirectory("./crash/");
+		if (!FileSystem.exists(Main.path + "./crash/"))
+			FileSystem.createDirectory(Main.path + "./crash/");
 
-		File.saveContent(path, errMsg + "\r\n");
+		File.saveContent(Main.path + path, errMsg + "\r\n");
 
 		Sys.println(errMsg);
 		Sys.println("Crash dump saved in " + Path.normalize(path));
@@ -180,7 +181,7 @@ class Main extends Sprite
 		Application.current.window.alert(errMsg, "Error!");
 		//}
 
-		DiscordClient.shutdown();
+		
 		e.stopPropagation();
 		e.stopImmediatePropagation();
 		//Sys.exit(1);
