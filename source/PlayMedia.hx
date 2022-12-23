@@ -89,7 +89,7 @@ class PlayMedia extends MusicBeatState // script by 4Axion!!! please credit :)
 		var foundFile:Bool = false;
 		var fileName:String = #if MODS_ALLOWED Paths.modFolders('videos/' + name + '.' + Paths.VIDEO_EXT); #else ''; #end
 		#if sys
-		if(FileSystem.exists(fileName)) {
+		if(OpenFlAssets.exists(fileName)) {
 			foundFile = true;
 		}
 		#end
@@ -98,7 +98,7 @@ class PlayMedia extends MusicBeatState // script by 4Axion!!! please credit :)
 		{
 			fileName = Paths.video(name);
 			
-			if(#if sys FileSystem.exists(fileName) #else OpenFlAssets.exists(fileName) #end) {
+			if(OpenFlAssets.exists(fileName)) {
 				foundFile = true;
 			}
 		}
