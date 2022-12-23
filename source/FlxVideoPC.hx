@@ -18,9 +18,9 @@ class FlxVideoPC extends FlxBasic {
 
 	public var readyAndPlaying:Void->Void = null; // when play on load is true
 
-	#if (desktop && android)
+	
 	public static var vlcBitmap:VlcBitmap;
-        #end
+        
 	public var loaded:Bool = false;
 	public var playOnLoad:Bool = false;
 	public var codedPause:Bool = false;
@@ -63,7 +63,7 @@ class FlxVideoPC extends FlxBasic {
 			}
 		}
 			
-		#elseif (desktop && android)
+		
 		// by Polybius, check out PolyEngine! https://github.com/polybiusproxy/PolyEngine
 
 		vlcBitmap = new VlcBitmap();
@@ -84,7 +84,7 @@ class FlxVideoPC extends FlxBasic {
 
 		FlxG.addChildBelowMouse(vlcBitmap);
 		vlcBitmap.play(checkFile(name));
-		#end
+		
 	}
 
 	#if desktop
