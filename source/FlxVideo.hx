@@ -19,9 +19,9 @@ class FlxVideo extends FlxBasic {
 	#if VIDEOS_ALLOWED
 	public var finishCallback:Void->Void = null;
 
-	#if (desktop && android)
+	
 	public static var vlcBitmap:VlcBitmap;
-	#end
+	
 
 	public var skipIcon:Bitmap;
 
@@ -68,7 +68,7 @@ class FlxVideo extends FlxBasic {
 			}
 		}
 
-		#elseif (desktop && android)
+		
 		// by Polybius, check out PolyEngine! https://github.com/polybiusproxy/PolyEngine
 
 		vlcBitmap = new VlcBitmap();
@@ -101,7 +101,7 @@ class FlxVideo extends FlxBasic {
 
 		vlcBitmap.play(checkFile(name));
 		FlxTween.tween(skipIcon, {alpha: 1}, 2, {startDelay: 1});
-		#end
+		
 	}
 
 	function onResize(_) {
